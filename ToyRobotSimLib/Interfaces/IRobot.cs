@@ -9,6 +9,8 @@ namespace ToyRobotSimLib.Interfaces
 {
     public interface IRobot
     {
+        bool IsPlaced { get; set; }
+
         Direction Direction { get; set; }
         
     }
