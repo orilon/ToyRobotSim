@@ -5,46 +5,46 @@ using System;
 using System.IO;
 using ToyRobotSimLib.Domain;
 using ToyRobotSimLib.Interfaces;
+using ToyRobotSimLib.Services;
 
 namespace ToyRobotSim
 {
     class Program
     {
+
+        public static readonly IServiceProvider serviceProvider = new ContainerBuilder().Build();
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-        }
+            //Startup();
 
-        static void Startup()
-        {
-            // instantiate
-            var services = new ServiceCollection();
-            ConfigureServices(services);
-        }
+            ILogger logger = serviceProvider.GetService<ILogger<IRobot>>();
+            IBoard board = serviceProvider.GetService<IBoard>();
+            IRobot robot = serviceProvider.GetService<IRobot>();
+            IDirectiveParser parser = serviceProvider.GetService<IDirectiveParser>();
+            ISimulator simulator = new Simulator(board, robot, parser);
 
-        private static void ConfigureServices(IServiceCollection services)
-        {
-            // configure logging
-            services.AddLogging(builder =>
+            bool _exit = false;
+            do
             {
-                builder.AddConsole();
-                builder.AddDebug();
-            });
+                try
+                {
+                    Console.WriteLine($"What would you like the robot to do?");
+                    if (args.Length == 0)
+                        args = Console.ReadLine().Split(' ');
+                    var response = simulator.ProcessDirective(args);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"{ex.Message}");
+                }
 
-            // build config
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false)
-                .AddEnvironmentVariables()
-                .Build();
+                Console.WriteLine($"");
+                args = new string[] { };
 
-            services.Configure<AppSettings>(configuration.GetSection("App"));
+            } while (!_exit);
 
-            // add services:
-            services.AddTransient<IRobot, Robot>();
-
-            // add app
-            services.AddTransient<Program>();
         }
+
     }
 }

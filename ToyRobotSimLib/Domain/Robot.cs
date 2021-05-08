@@ -12,16 +12,77 @@ namespace ToyRobotSimLib.Domain
     public class Robot : IRobot
     {
         public Direction Direction { get; set; }
-        private readonly ILogger<Robot> _logger;
+        public bool IsPlaced { get; set; }
+        public Position Position { get; set; }
 
-        public Robot(ILogger<Robot> logger)
+        private readonly ILogger<IRobot> _logger;
+
+        public Robot(ILogger<IRobot> logger)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public void ProcessAction()
+
+        public bool Place(Direction direction, Position position)
         {
-            _logger.LogInformation($"Processing action...");
+            throw new NotImplementedException();
+        }
+
+        public object Move()
+        {
+            if (!IsPlaced)
+                throw new ApplicationException($"Unable to move the robot until it has been (first) PLACED.");
+            var newPosition = CalculateMove();
+            Direction = newPosition.direction;
+            Position = newPosition.position;
+            return newPosition;
+        }
+
+        public Direction TurnLeft()
+        {
+            var directions = (Direction[])Enum.GetValues(typeof(Direction));
+            Direction = (int)Direction - 1 > 0 ? directions[(int)Direction - 1] : directions[directions.Length];
+            return Direction;
+        }
+
+        //TODO Refactor method (DRY with TurnLeft)
+        public Direction TurnRight()
+        {
+            var directions = (Direction[])Enum.GetValues(typeof(Direction));
+            Direction = (int)Direction + 1 < directions.Length ? directions[(int)Direction + 1] : directions[0];
+            return Direction;
+        }
+
+        public string Report()
+        {
+            return $"{Position.X},{Position.Y},{Direction.ToString()}";
+        }
+
+        public Direction CurrrentDirection() => Direction;
+
+        public (bool isPlaced, Direction direction, Position position) CurrentPlacement() => (IsPlaced, Direction, Position);
+
+        public (Direction direction, Position position) CurrentPosition() => (Direction, Position);
+
+        public (Direction direction, Position position) CalculateMove()
+        {
+            var nextPosition = new Position(Position.X, Position.Y);
+            switch (Direction)
+            {
+                case Direction.North:
+                    nextPosition.Y++;
+                    break;
+                case Direction.East:
+                    nextPosition.X++;
+                    break;
+                case Direction.South:
+                    nextPosition.Y--;
+                    break;
+                case Direction.West:
+                    nextPosition.X--;
+                    break;
+            }
+            return (Direction, nextPosition);
         }
     }
 }

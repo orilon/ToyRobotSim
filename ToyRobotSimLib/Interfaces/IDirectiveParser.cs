@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToyRobotSimLib.Enums;
 
 namespace ToyRobotSimLib.Interfaces
 {
-    interface IActionParser
+    public interface IDirectiveParser
     {
-        Action ParseAction(string[] args);
+        Directive ParseDirective(string[] args);
 
 
     }

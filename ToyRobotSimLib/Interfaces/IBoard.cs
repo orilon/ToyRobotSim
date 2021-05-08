@@ -9,6 +9,9 @@ namespace ToyRobotSimLib.Interfaces
 {
     public interface IBoard
     {
+        int Rows { get; }
+        int Columns { get; }
+
         void Configure(int rows, int columns);
 
         bool CheckPosition(Position position);

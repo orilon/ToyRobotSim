@@ -4,9 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ToyRobotSimLib.Interfaces
+namespace ToyRobotSimLib.Enums
 {
-    interface IDirective
+    public enum Directive
     {
+        Place,
+        Move,
+        Left,
+        Right,
+        Report
     }
 }

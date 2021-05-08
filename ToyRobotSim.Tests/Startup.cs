@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ToyRobotSimLib.Services
+namespace ToyRobotSim.Tests
 {
-    class SimulationService
+    class Startup
     {
     }
 }
