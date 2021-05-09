@@ -11,7 +11,7 @@ namespace ToyRobotSimLib.Interfaces
     {
         string ProcessDirective(string[] args);
 
-        string GetConsoleIntroduction(bool breakToNewLine = false);
+        string GetConsoleIntroduction(bool breakToNewLine = false, bool asciiHeader = false);
 
     }
 }

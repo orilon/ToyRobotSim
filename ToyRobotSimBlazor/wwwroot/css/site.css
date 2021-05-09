@@ -2,6 +2,7 @@
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.9em;
 }
 
 a, .btn-link {
@@ -48,3 +49,42 @@ a, .btn-link {
         right: 0.75rem;
         top: 0.5rem;
     }
+
+.border{
+    border: 1px;
+}
+
+.square {
+    padding-bottom: 15%;
+}
+
+.logsView {
+    font-family: 'Courier New', monospace;
+    font-size: 0.8em;
+    color: crimson;
+    border: 1px solid #eee;
+    display: block;
+    overflow-y: scroll;
+    max-height: 92px;
+}
+
+.background-west {
+    background: url('/images/bot-west.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.background-east {
+    background: url('/images/bot-east.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.background-north {
+    background: url('/images/bot-north.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.background-south {
+    background: url('/images/bot-south.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}

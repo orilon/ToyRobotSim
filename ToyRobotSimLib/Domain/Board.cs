@@ -39,19 +39,19 @@ namespace ToyRobotSimLib.Domain
             switch (direction)
             {
                 case Direction.North:
-                    if ((position.Y) < YAxisSizeLimit && position.Y >= 0)
+                    if ((position.X) < XAxisSizeLimit && position.X >= 0)
                         return true;
                     break;
                 case Direction.East:
-                    if ((position.X) < XAxisSizeLimit && position.X >= 0)
-                        return true;
-                    break;
-                case Direction.South:
                     if ((position.Y) < YAxisSizeLimit && position.Y >= 0)
                         return true;
                     break;
-                case Direction.West:
+                case Direction.South:
                     if ((position.X) < XAxisSizeLimit && position.X >= 0)
+                        return true;
+                    break;
+                case Direction.West:
+                    if ((position.Y) < YAxisSizeLimit && position.Y >= 0)
                         return true;
                     break;
             }

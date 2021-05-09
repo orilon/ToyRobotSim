@@ -11,10 +11,15 @@ namespace ToyRobotSimLib.Extensions
 {
     public static class ToyRobotSimExtensions
     {
+        public static bool EnumTryParseStrict<TEnum>(string val, out TEnum enumVal, bool ignoreCase = false) where TEnum : struct
+        {
+            return Enum.TryParse(val, ignoreCase, out enumVal) && Enum.IsDefined(typeof(TEnum), enumVal);
+        }
+
         public static Direction GetDirection(this string val)
         {
             Direction direction;
-            if (!Enum.TryParse(val, true, out direction))
+            if (!EnumTryParseStrict(val, out direction, true))
                 throw new ArgumentException($"Unable to convert {val} to a valid direction. \nYour options are {string.Join(",", Enum.GetNames(typeof(Direction)))}");
             return direction;
         }
@@ -22,7 +27,7 @@ namespace ToyRobotSimLib.Extensions
         public static Directive GetDirective(this string val)
         {
             Directive directive;
-            if (!Enum.TryParse(val, true, out directive))
+            if (!EnumTryParseStrict(val, out directive, true))
                 throw new ArgumentException($"Unable to convert {val} to a valid directive. \nYour options are {string.Join(",", Enum.GetNames(typeof(Directive)))}");
             return directive;
         }

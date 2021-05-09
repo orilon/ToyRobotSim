@@ -75,16 +75,16 @@ namespace ToyRobotSimLib.Domain
             switch (Direction)
             {
                 case Direction.North:
-                    nextPosition.Y++;
-                    break;
-                case Direction.East:
                     nextPosition.X++;
                     break;
+                case Direction.East:
+                    nextPosition.Y++;
+                    break;
                 case Direction.South:
-                    nextPosition.Y--;
+                    nextPosition.X--;
                     break;
                 case Direction.West:
-                    nextPosition.X--;
+                    nextPosition.Y--;
                     break;
             }
             return (Direction, nextPosition);

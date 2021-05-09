@@ -23,25 +23,29 @@ namespace ToyRobotSimLib.Services
             directiveParser = actionParser;
         }
 
-        public string GetConsoleIntroduction(bool breakToNewLine = false)
+        public string GetConsoleIntroduction(bool breakToNewLine = false, bool asciiHeader = false)
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"#######                 ######                                 #####           ");
-            sb.AppendLine($"   #     ####  #   #    #     #  ####  #####   ####  #####    #     # # #    # ");
-            sb.AppendLine($"   #    #    #  # #     #     # #    # #    # #    #   #      #       # ##  ## ");
-            sb.AppendLine($"   #    #    #   #      ######  #    # #####  #    #   #       #####  # # ## # ");
-            sb.AppendLine($"   #    #    #   #      #   #   #    # #    # #    #   #            # # #    # ");
-            sb.AppendLine($"   #    #    #   #      #    #  #    # #    # #    #   #      #     # # #    # ");
-            sb.AppendLine($"   #     ####    #      #     #  ####  #####   ####    #       #####  # #    # ");
+            if (asciiHeader)
+            {
+                sb.AppendLine($"#######                 ######                                 #####           ");
+                sb.AppendLine($"   #     ####  #   #    #     #  ####  #####   ####  #####    #     # # #    # ");
+                sb.AppendLine($"   #    #    #  # #     #     # #    # #    # #    #   #      #       # ##  ## ");
+                sb.AppendLine($"   #    #    #   #      ######  #    # #####  #    #   #       #####  # # ## # ");
+                sb.AppendLine($"   #    #    #   #      #   #   #    # #    # #    #   #            # # #    # ");
+                sb.AppendLine($"   #    #    #   #      #    #  #    # #    # #    #   #      #     # # #    # ");
+                sb.AppendLine($"   #     ####    #      #     #  ####  #####   ####    #       #####  # #    # ");
+                sb.AppendLine($"");
+            }
+            sb.AppendLine($"A phenomenal AI toy robot simulator, without the AI, progressing one unit at a time...");
             sb.AppendLine($"");
-            sb.AppendLine($" A phenomenal AI toy robot simulator, without the AI, progressing one unit at a time...");
-            sb.AppendLine($"");
-            sb.AppendLine($" To Start, you need to place the robot onto the virtual board, which is {board.XAxisSizeLimit} (X-axis) by {board.YAxisSizeLimit} (Y-axis) units in size.");
-            sb.AppendLine($" ".AppendPlaceInstruction(breakToNewLine));
-            sb.AppendLine($" ".AppendTurnLeftInstruction(breakToNewLine));
-            sb.AppendLine($" ".AppendTurnRightInstruction(breakToNewLine));
-            sb.AppendLine($" ".AppendMoveInstruction(breakToNewLine));
-            sb.AppendLine($" ".AppendReportInstruction(breakToNewLine));
+            sb.AppendLine($"To Start, you need to PLACE the robot onto the virtual board, which is {board.XAxisSizeLimit} (X-axis) by {board.YAxisSizeLimit} (Y-axis) units in size.");
+            sb.AppendLine($"Commands:");
+            sb.AppendLine($"".AppendPlaceInstruction(breakToNewLine));
+            sb.AppendLine($"".AppendTurnLeftInstruction(breakToNewLine));
+            sb.AppendLine($"".AppendTurnRightInstruction(breakToNewLine));
+            sb.AppendLine($"".AppendMoveInstruction(breakToNewLine));
+            sb.AppendLine($"".AppendReportInstruction(breakToNewLine));
             sb.AppendLine($"");
             return sb.ToString();
         }

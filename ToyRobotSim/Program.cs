@@ -28,7 +28,7 @@ namespace ToyRobotSim
             IDirectiveParser parser = serviceProvider.GetService<IDirectiveParser>();
             ISimulator simulator = new Simulator(board, robot, parser);
 
-            Console.WriteLine(simulator.GetConsoleIntroduction());
+            Console.WriteLine(simulator.GetConsoleIntroduction(asciiHeader: true));
             bool _exit = false;
             do
             {
