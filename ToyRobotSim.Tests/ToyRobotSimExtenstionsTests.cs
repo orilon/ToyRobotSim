@@ -38,6 +38,7 @@ namespace ToyRobotSim.Tests
         public void ValidateIncorrectGetDirectionValueFails()
         {
             Assert.Throws<ArgumentException>(() => "5".GetDirection());
+            //Assert.False("5".GetDirection());
         }
 
     }

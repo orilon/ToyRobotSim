@@ -25,7 +25,10 @@ namespace ToyRobotSimLib.Domain
 
         public bool Place(Direction direction, Position position)
         {
-            throw new NotImplementedException();
+            IsPlaced = true;
+            Direction = direction;
+            Position = position;
+            return IsPlaced;
         }
 
         public object Move()
@@ -55,6 +58,8 @@ namespace ToyRobotSimLib.Domain
 
         public string Report()
         {
+            if (!IsPlaced)
+                return $"The Toy Robot has not yet been placed. Please place it using the following: PLACE X,Y,F";
             return $"{Position.X},{Position.Y},{Direction.ToString()}";
         }
 

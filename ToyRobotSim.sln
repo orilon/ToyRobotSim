@@ -11,6 +11,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimLib", "ToyRobotS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimBlazor", "ToyRobotSimBlazor\ToyRobotSimBlazor.csproj", "{D9E84BC0-9F67-4E6D-9743-36ED4E57380F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console", "Console", "{2CA903C3-4C3E-45AE-8450-82F01FE22D8F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{3D4E8073-B59B-4076-AEE9-98CCAB41A65B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3FBFC4F0-23B9-4400-A450-2EF1CCA4E359}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{AA95428D-2EFD-4FF7-99E8-4020591A418B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +44,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AC5B0F5E-1A81-4F49-8D6A-62F0B4C6D078} = {2CA903C3-4C3E-45AE-8450-82F01FE22D8F}
+		{AE5B6F1D-1AC3-4913-85A9-A840769DA059} = {3FBFC4F0-23B9-4400-A450-2EF1CCA4E359}
+		{562C71EA-C484-4874-8E40-09F991CEC7F7} = {3D4E8073-B59B-4076-AEE9-98CCAB41A65B}
+		{D9E84BC0-9F67-4E6D-9743-36ED4E57380F} = {AA95428D-2EFD-4FF7-99E8-4020591A418B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {822A539D-DE8B-4B5E-8211-6CB393AB2B8F}

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,8 @@ using System.Threading.Tasks;
 using ToyRobotSimLib.Domain;
 using ToyRobotSimLib.Interfaces;
 using ToyRobotSimLib.Services;
+using System.IO;
+using ToyRobotSimLib.Configuration;
 
 namespace ToyRobotSim
 {
@@ -15,21 +18,30 @@ namespace ToyRobotSim
     {
         public IServiceProvider Build()
         {
-            var container = new ServiceCollection();
+            var services = new ServiceCollection();
 
-            container.AddSingleton<IBoard, Board>();
-            container.AddSingleton<IRobot, Robot>();
-            container.AddSingleton<ISimulator, Simulator>();
-            container.AddSingleton<IDirectiveParser, DirectiveParser>();
+            // build config
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false)
+                .AddEnvironmentVariables()
+                .Build();
+            services.Configure<AppSettings>(configuration.GetSection("App"));
+
+            // add services
+            services.AddSingleton<IBoard, Board>();
+            services.AddSingleton<IRobot, Robot>();
+            services.AddSingleton<ISimulator, Simulator>();
+            services.AddSingleton<IDirectiveParser, DirectiveParser>();
 
             // configure logging
-            container.AddLogging(builder =>
+            services.AddLogging(builder =>
             {
                 builder.AddConsole();
                 builder.AddDebug();
             });
 
-            return container.BuildServiceProvider();
+            return services.BuildServiceProvider();
         }
     }
 }

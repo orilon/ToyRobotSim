@@ -25,7 +25,7 @@ namespace ToyRobotSim.Tests
         [Fact]
         public void ValidateBoardBoundaries()
         {
-            Assert.True(board.Rows == 5 && board.Columns == 5);
+            Assert.True(board.XAxisSizeLimit == 5 && board.YAxisSizeLimit == 5);
         }
     }
 }

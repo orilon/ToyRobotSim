@@ -6,6 +6,8 @@ using System.IO;
 using ToyRobotSimLib.Domain;
 using ToyRobotSimLib.Interfaces;
 using ToyRobotSimLib.Services;
+using ToyRobotSimLib.Configuration;
+using System.Text;
 
 namespace ToyRobotSim
 {
@@ -13,10 +15,12 @@ namespace ToyRobotSim
     {
 
         public static readonly IServiceProvider serviceProvider = new ContainerBuilder().Build();
+        private AppSettings config;
 
         static void Main(string[] args)
         {
             //Startup();
+            //IOptions<AppSettings> options
 
             ILogger logger = serviceProvider.GetService<ILogger<IRobot>>();
             IBoard board = serviceProvider.GetService<IBoard>();
@@ -24,6 +28,7 @@ namespace ToyRobotSim
             IDirectiveParser parser = serviceProvider.GetService<IDirectiveParser>();
             ISimulator simulator = new Simulator(board, robot, parser);
 
+            Console.WriteLine(simulator.GetConsoleIntroduction());
             bool _exit = false;
             do
             {
@@ -33,6 +38,8 @@ namespace ToyRobotSim
                     if (args.Length == 0)
                         args = Console.ReadLine().Split(' ');
                     var response = simulator.ProcessDirective(args);
+                    if (!String.IsNullOrEmpty(response))
+                        Console.WriteLine($"{response}");
                 }
                 catch (Exception ex)
                 {
