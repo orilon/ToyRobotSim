@@ -130,7 +130,7 @@ MOVE
 RIGHT
 MOVE
 REPORT
-Output: 3,east
+Output: 3,4,east
 ```
 
 Test Case #3:
