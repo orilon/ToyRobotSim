@@ -13,11 +13,11 @@
 
 	<h1>Welcome to Toy Robot Simulator</h1>
 
-	<p style="font-family: 'Courier New', monospace; font-size: 0.7em">@HtmlHelper.RenderMultilineN($"{introduction}")</p>
+	<p class="introduction">@HtmlHelper.RenderMultilineN($"{introduction}")</p>
 
 	<div class="row">
 		<div class="col-6">
-			<input type="text" @bind-value="@commandPlace" placeholder="X,Y,F" />
+			<input class="input-place" type="text" @bind-value="@commandPlace" placeholder="X,Y,F" />
 			<button class="btn btn-primary" @onclick="mouseEventArgs => PlaceDirective(commandPlace, mouseEventArgs)">PLACE</button>
 			<button class="btn btn-info" @onclick="mouseEventArgs => MoveDirective(mouseEventArgs)">MOVE</button>
 			<button class="btn btn-info" @onclick="mouseEventArgs => LeftDirective(mouseEventArgs)">LEFT</button>
@@ -29,12 +29,12 @@
 		</div>
 	</div>
 
-	@for (int rowIndex = (board.YAxisSizeLimit-1); rowIndex >= 0; rowIndex--)
+	@for (int rowIndex = (board.YAxisSizeLimit - 1); rowIndex >= 0; rowIndex--)
 	{
 	 <div class="row">
 			@for (int colIndex = 0; colIndex < @board.XAxisSizeLimit; colIndex++)
 			{
-		  <div class="col-sm col-xs border square @(activeCell.key == $"{@rowIndex}-{@colIndex}" ? activeCell.value : "")">
+		  <div class="col-lg col-md col-sm col-xs-2 border square @(activeCell.key == $"{@rowIndex}-{@colIndex}" ? activeCell.value : "")">
 					@rowIndex-@colIndex
 		  </div>
 			}
@@ -78,14 +78,15 @@
 			string[] args = new string[] { $"place", $"{commandPlace}" };
 			var result = simulator.ProcessDirective(args);
 			if (mouseEventArgs.CtrlKey)
-				commandHistory += ($"Ctrl Key pressed: {mouseEventArgs.CtrlKey}\n");
-
-			commandHistory += $"placing the robot {commandPlace}\n";
+				UpdateCommandLogs($"Ctrl Key pressed: {mouseEventArgs.CtrlKey}\n");
+			UpdateCommandLogs($"placing the robot {commandPlace}\n");
+			if (!String.IsNullOrEmpty(result))
+				UpdateCommandLogs($"{result}\n");
 			ResetActiveCell();
 		}
 		catch (Exception ex)
 		{
-			commandHistory += $"{ex.Message}\n";
+			UpdateCommandLogs($"{ex.Message}\n");
 		}
 	}
 	void MoveDirective(MouseEventArgs mouseEventArgs)
@@ -95,14 +96,15 @@
 			string[] args = new string[] { "move" };
 			var result = simulator.ProcessDirective(args);
 			if (mouseEventArgs.CtrlKey)
-				commandHistory += ($"Ctrl Key pressed: {mouseEventArgs.CtrlKey}\n");
-
-			commandHistory += $"moved the robot\n";
+				UpdateCommandLogs($"Ctrl Key pressed: {mouseEventArgs.CtrlKey}\n");
+			UpdateCommandLogs($"moving the robot\n");
+			if (!String.IsNullOrEmpty(result))
+				UpdateCommandLogs($"{result}\n");
 			ResetActiveCell();
 		}
 		catch (Exception ex)
 		{
-			commandHistory += $"{ex.Message}\n";
+			UpdateCommandLogs($"{ex.Message}\n");
 		}
 	}
 	void LeftDirective(MouseEventArgs mouseEventArgs)
@@ -112,14 +114,15 @@
 			string[] args = new string[] { "left" };
 			var result = simulator.ProcessDirective(args);
 			if (mouseEventArgs.CtrlKey)
-				commandHistory += ($"Ctrl Key pressed: {mouseEventArgs.CtrlKey}\n");
-
-			commandHistory += $"rotated the robot to the left\n";
+				UpdateCommandLogs($"Ctrl Key pressed: {mouseEventArgs.CtrlKey}\n");
+			UpdateCommandLogs($"rotated the robot to the left\n");
+			if (!String.IsNullOrEmpty(result))
+				UpdateCommandLogs($"{result}\n");
 			ResetActiveCell();
 		}
 		catch (Exception ex)
 		{
-			commandHistory += $"{ex.Message}\n";
+			UpdateCommandLogs($"{ex.Message}\n");
 		}
 	}
 	void RightDirective(MouseEventArgs mouseEventArgs)
@@ -129,14 +132,15 @@
 			string[] args = new string[] { "right" };
 			var result = simulator.ProcessDirective(args);
 			if (mouseEventArgs.CtrlKey)
-				commandHistory += ($"Ctrl Key pressed: {mouseEventArgs.CtrlKey}\n");
-
-			commandHistory += $"rotated the robot to the right\n";
+				UpdateCommandLogs($"Ctrl Key pressed: {mouseEventArgs.CtrlKey}\n");
+			UpdateCommandLogs($"rotated the robot to the right\n");
+			if (!String.IsNullOrEmpty(result))
+				UpdateCommandLogs($"{result}\n");
 			ResetActiveCell();
 		}
 		catch (Exception ex)
 		{
-			commandHistory += $"{ex.Message}\n";
+			UpdateCommandLogs($"{ex.Message}\n");
 		}
 	}
 	void ReportDirective(MouseEventArgs mouseEventArgs)
@@ -146,14 +150,18 @@
 			string[] args = new string[] { "report" };
 			var result = simulator.ProcessDirective(args);
 			if (mouseEventArgs.CtrlKey)
-				commandHistory += ($"Ctrl Key pressed: {mouseEventArgs.CtrlKey}\n");
-
-			commandHistory += $"{result}\n";
+				UpdateCommandLogs($"Ctrl Key pressed: {mouseEventArgs.CtrlKey}\n");
+			UpdateCommandLogs($"{result}\n");
 		}
 		catch (Exception ex)
 		{
-			commandHistory += $"{ex.Message}\n";
+			UpdateCommandLogs($"{ex.Message}\n");
 		}
+	}
+
+	void UpdateCommandLogs(string message)
+	{
+		commandHistory = $"{message}\n" + commandHistory;
 	}
 
 }
