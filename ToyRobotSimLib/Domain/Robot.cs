@@ -41,6 +41,7 @@ namespace ToyRobotSimLib.Domain
             return newPosition;
         }
 
+        //TODO Refactor method (DRY with TurnRight)
         public Direction TurnLeft()
         {
             var directions = (Direction[])Enum.GetValues(typeof(Direction));

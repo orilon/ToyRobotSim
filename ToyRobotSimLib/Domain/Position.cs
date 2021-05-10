@@ -8,7 +8,6 @@ namespace ToyRobotSimLib.Domain
 {
     public class Position
     {
-        //private readonly ILogger<Position> _logger;
         public int X { get; set; }
         public int Y { get; set; }
 

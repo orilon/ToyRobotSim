@@ -10,7 +10,7 @@ using ToyRobotSimLib.Extensions;
 
 namespace ToyRobotSimLib.Services
 {
-    public class Simulator : ISimulator
+    public abstract class Simulator : ISimulator
     {
         private readonly IBoard board;
         private readonly IRobot robot;
