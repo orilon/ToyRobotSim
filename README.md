@@ -90,6 +90,63 @@ Output: 3,3,NORTH
 
 -----
 
+Test Cases:
+
+Test Case #1:
+
+> PLACE 1,1,North
+> MOVE
+> MOVE
+> RIGHT
+> MOVE
+> RIGHT
+> MOVE
+> REPORT
+> Output: 2,2,south
+
+Test Case #2:
+
+> PLACE 0,0,East
+> MOVE
+> MOVE
+> RIGHT
+> MOVE
+> MOVE
+> LEFT
+> LEFT
+> MOVE
+> MOVE
+> MOVE
+> MOVE
+> RIGHT
+> MOVE
+> REPORT
+> Output: 4,3,east
+
+Test Case #3:
+
+> PLACE 4,2,East
+> MOVE
+> LEFT
+> MOVE
+> MOVE
+> RIGHT
+> MOVE
+> LEFT
+> MOVE
+> MOVE
+> RIGHT
+> MOVE
+> RIGHT
+> MOVE
+> MOVE
+> RIGHT
+> MOVE
+> REPORT
+> Output: 2,3,west
+
+------
+
 ### Disclaimer(s):
 
 - The R2D2 images were sourced from the [Hum3D store](https://hum3d.com/360-view/?id=185036), and are used purely for educational purposes only, to make it easier to identify the direction of the robot (well that's the hope). _Chris Visser at no time claims ownership of these images used in any way whatsoever._
