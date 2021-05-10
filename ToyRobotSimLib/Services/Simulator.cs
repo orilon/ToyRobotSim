@@ -75,6 +75,8 @@ namespace ToyRobotSimLib.Services
                     case Directive.Move:
                         if (robot.CalculateMove().ValidateBoardMove(board, out result))
                             robot.Move();
+                        else
+                            return result;
                         break;
                     case Directive.Left:
                         robot.TurnLeft();
