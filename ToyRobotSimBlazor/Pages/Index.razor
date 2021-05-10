@@ -34,7 +34,7 @@
 	 <div class="row">
 			@for (int colIndex = 0; colIndex < @board.XAxisSizeLimit; colIndex++)
 			{
-		  <div class="col-lg col-md col-sm col-xs-2 border square @(activeCell.key == $"{@rowIndex}-{@colIndex}" ? activeCell.value : "")">
+		  <div class="col-lg col-md col-sm col-xs-2 border square @(activeCell.key == $"{@colIndex}-{@rowIndex}" ? activeCell.value : "")">
 					@rowIndex-@colIndex
 		  </div>
 			}
