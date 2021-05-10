@@ -130,7 +130,7 @@ MOVE
 RIGHT
 MOVE
 REPORT
-Output: 4,3,east
+Output: 3,east
 ```
 
 Test Case #3:
@@ -154,7 +154,7 @@ MOVE
 RIGHT
 MOVE
 REPORT
-Output: 2,3,west
+Output: 3,2,west
 ```
 
 _NOTE: These tests are also included in the Simulator tests, covered in the ToyRobotSim.Tests (XUnit) project_

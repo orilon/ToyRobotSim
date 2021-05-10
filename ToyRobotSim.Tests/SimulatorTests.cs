@@ -84,7 +84,7 @@ namespace ToyRobotSim.Tests
             result = simulator.ProcessDirective(args);
             args = new string[] { $"REPORT" };
             result = simulator.ProcessDirective(args);
-            Assert.True(result.Equals("4,3,east", StringComparison.OrdinalIgnoreCase));
+            Assert.True(result.Equals("3,4,east", StringComparison.OrdinalIgnoreCase));
         }
 
 
@@ -128,7 +128,7 @@ namespace ToyRobotSim.Tests
             result = simulator.ProcessDirective(args);
             args = new string[] { $"REPORT" };
             result = simulator.ProcessDirective(args);
-            Assert.True(result.Equals("2,3,west", StringComparison.OrdinalIgnoreCase));
+            Assert.True(result.Equals("3,2,west", StringComparison.OrdinalIgnoreCase));
         }
 
     }
