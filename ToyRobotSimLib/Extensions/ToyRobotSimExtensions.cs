@@ -36,7 +36,7 @@ namespace ToyRobotSimLib.Extensions
         {
             int output;
             if (!int.TryParse(val, out output))
-                throw new ArgumentException($"Unable to convert {val} to a number. \nYour options are between 1 - 5.");
+                throw new ArgumentException($"Unable to convert {val} to a number. \nYour options are between 0 - 4.");
             return output;
         }
 
