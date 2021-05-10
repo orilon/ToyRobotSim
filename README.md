@@ -13,7 +13,11 @@ Tech stack:
 - ToyRobotSim.Tests
   _A XUnit based project containing various unit tests. This ensures better code coverage and early identification of any breaking code changes._
 
-Principles applied:
+Deployments:
+
+- This application is currently deployed via Github Actions, to an Azure App Service, which can be viewed at : [orilon.azurewebsites.net](https://orilon.azurewebsites.net)
+
+Software Development Principles applied:
 
 - **S**ingle Responsibility
   _Summary: A class should do one thing - the thing it should be responsible for._
