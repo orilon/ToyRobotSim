@@ -99,6 +99,13 @@ a, .btn-link {
     background-position: center;
 }
 
+.footer{
+    margin: 5px 0px 20px;
+    text-align: center;
+    font-family: cursive;
+    font-size: 0.8em;
+}
+
 @media (min-width: 300px) and (max-width: 800px) {
     .col-xs-2 {
         max-width: 20% !important;
