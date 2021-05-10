@@ -44,7 +44,7 @@ namespace ToyRobotSimLib.Domain
         public Direction TurnLeft()
         {
             var directions = (Direction[])Enum.GetValues(typeof(Direction));
-            Direction = (int)Direction - 1 > 0 ? directions[(int)Direction - 1] : directions[directions.Length];
+            Direction = ((int)Direction - 1) >= 0 ? directions[(int)Direction - 1] : directions[directions.Length - 1];
             return Direction;
         }
 

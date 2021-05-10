@@ -77,7 +77,7 @@ namespace ToyRobotSimLib.Services
                             robot.Move();
                         break;
                     case Directive.Left:
-                        robot.TurnRight();
+                        robot.TurnLeft();
                         break;
                     case Directive.Right:
                         robot.TurnRight();

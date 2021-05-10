@@ -29,12 +29,12 @@
 		</div>
 	</div>
 
-	@for (int rowIndex = board.YAxisSizeLimit; rowIndex >= 0; rowIndex--)
+	@for (int rowIndex = (board.YAxisSizeLimit-1); rowIndex >= 0; rowIndex--)
 	{
 	 <div class="row">
 			@for (int colIndex = 0; colIndex < @board.XAxisSizeLimit; colIndex++)
 			{
-		  <div class="col-sm border square @(activeCell.key == $"{@rowIndex}-{@colIndex}" ? activeCell.value : "")">
+		  <div class="col-sm col-xs border square @(activeCell.key == $"{@rowIndex}-{@colIndex}" ? activeCell.value : "")">
 					@rowIndex-@colIndex
 		  </div>
 			}
