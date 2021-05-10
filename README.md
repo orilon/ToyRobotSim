@@ -70,16 +70,21 @@ Any move that would cause the robot to fall must be ignored.
 
 If using stdout:
 
+```
 a)PLACE 0,0,NORTH
 MOVE
 REPORT
 Output: 0,1,NORTH 
+```
 
+```
 b)PLACE 0,0,NORTH
 LEFT
 REPORT
 Output: 0,0,WEST 
+```
 
+```
 c)PLACE 1,2,EAST
 MOVE
 MOVE
@@ -87,6 +92,7 @@ LEFT
 MOVE
 REPORT
 Output: 3,3,NORTH
+```
 
 -----
 
@@ -94,56 +100,64 @@ Test Cases:
 
 Test Case #1:
 
-> PLACE 1,1,North
-> MOVE
-> MOVE
-> RIGHT
-> MOVE
-> RIGHT
-> MOVE
-> REPORT
-> Output: 2,2,south
+```
+PLACE 1,1,North
+MOVE
+MOVE
+RIGHT
+MOVE
+RIGHT
+MOVE
+REPORT
+Output: 2,2,south
+```
 
 Test Case #2:
 
-> PLACE 0,0,East
-> MOVE
-> MOVE
-> RIGHT
-> MOVE
-> MOVE
-> LEFT
-> LEFT
-> MOVE
-> MOVE
-> MOVE
-> MOVE
-> RIGHT
-> MOVE
-> REPORT
-> Output: 4,3,east
+```
+PLACE 0,0,East
+MOVE
+MOVE
+RIGHT
+MOVE
+MOVE
+LEFT
+LEFT
+MOVE
+MOVE
+MOVE
+MOVE
+RIGHT
+MOVE
+REPORT
+Output: 4,3,east
+```
 
 Test Case #3:
 
-> PLACE 4,2,East
-> MOVE
-> LEFT
-> MOVE
-> MOVE
-> RIGHT
-> MOVE
-> LEFT
-> MOVE
-> MOVE
-> RIGHT
-> MOVE
-> RIGHT
-> MOVE
-> MOVE
-> RIGHT
-> MOVE
-> REPORT
-> Output: 2,3,west
+```
+PLACE 4,2,East
+MOVE
+LEFT
+MOVE
+MOVE
+RIGHT
+MOVE
+LEFT
+MOVE
+MOVE
+RIGHT
+MOVE
+RIGHT
+MOVE
+MOVE
+RIGHT
+MOVE
+REPORT
+Output: 2,3,west
+```
+
+_NOTE: These tests are also included in the Simulator tests, covered in the ToyRobotSim.Tests (XUnit) project_
 
 ------
 
